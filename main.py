@@ -24,7 +24,7 @@ def get_jobs():
     SELECT title,source
     FROM jobs
     ORDER BY id DESC
-    LIMIT 30
+    LIMIT 50
     """)
 
     rows = cur.fetchall()

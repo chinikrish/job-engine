@@ -25,6 +25,8 @@ STATIC_SOURCES = [
 "https://apslprb.ap.gov.in/",
 "https://apsrtc.ap.gov.in/"
 "https://www.freejobalert.com/ap-government-jobs/",
+"https://www.freejobalert.com/government-jobs/"
+"https://www.freejobalert.com/bank-jobs/"
 "https://www.freejobalert.com/ssc-jobs/",
 "https://www.freejobalert.com/railway-jobs/",
 "https://www.indgovtjobs.in",
