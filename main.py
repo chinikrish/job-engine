@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 import sqlite3
-from smart_crawler import crawl
+from crawler import crawl_jobs
 
 app = FastAPI()
+
 
 @app.get("/")
 def home():
@@ -14,7 +15,7 @@ def home():
 
 def get_jobs():
 
-    crawl()
+    crawl_jobs()
 
     conn = sqlite3.connect("jobs.db")
     cur = conn.cursor()
@@ -27,6 +28,8 @@ def get_jobs():
     """)
 
     rows = cur.fetchall()
+
+    conn.close()
 
     jobs = []
 

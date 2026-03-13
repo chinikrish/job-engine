@@ -1,24 +1,49 @@
 from googlesearch import search
 
-queries = [
+# Google search dorks
+DORKS = [
 
-"site:gov.in recruitment notification",
-"site:gov.in vacancy notification",
-"Andhra Pradesh government jobs notification",
-"APPSC recruitment notification",
-"government job notification pdf"
+'site:gov.in recruitment notification',
+'site:gov.in vacancy notification',
+'site:gov.in filetype:pdf recruitment',
+'"APPSC recruitment notification"',
+'"Andhra Pradesh government jobs notification"'
 
 ]
+
+# trusted job sources
+STATIC_SOURCES = [
+
+"https://freejobalert.com/",
+"https://www.mysarkarinaukri.com/",
+"https://sarkari-naukri.in/",
+"https://indgovtjobs.in/",
+"https://freshersworld.com/",
+"https://psc.ap.gov.in/",
+"https://ap.gov.in/",
+"https://employmentnews.gov.in/",
+"https://apslprb.ap.gov.in/",
+"https://apsrtc.ap.gov.in/"
+"https://www.freejobalert.com/ap-government-jobs/",
+"https://www.freejobalert.com/ssc-jobs/",
+"https://www.freejobalert.com/railway-jobs/",
+"https://www.indgovtjobs.in",
+]
+
 
 def discover_links():
 
     links = []
 
-    for q in queries:
+    # add trusted sources
+    links.extend(STATIC_SOURCES)
+
+    # discover new links from google
+    for query in DORKS:
 
         try:
 
-            results = search(q, num_results=5)
+            results = search(query, num_results=5)
 
             for r in results:
                 links.append(r)
@@ -26,4 +51,7 @@ def discover_links():
         except:
             pass
 
-    return list(set(links))
+    # remove duplicates
+    links = list(set(links))
+
+    return links
